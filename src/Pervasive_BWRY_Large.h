@@ -56,7 +56,7 @@
 /// @see https://www.pervasivedisplays.com/products/?_sft_etc_itc=itc&_sft_product_colour=black-white-red-yellow
 /// @{
 ///
-#define eScreen_EPD_969_QS_0B SCREEN(SIZE_741, FILM_Q, DRIVER_B) ///< reference 970-QS-0B
+#define eScreen_EPD_969_QS_0B SCREEN(SIZE_969, FILM_Q, DRIVER_B) ///< reference 970-QS-0B
 /// @}
 
 ///
