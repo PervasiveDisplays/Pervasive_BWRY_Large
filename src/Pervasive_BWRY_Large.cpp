@@ -169,7 +169,7 @@ void Pervasive_BWRY_Large::COG_getDataOTP()
     debugOTP(COG_data, _readBytes, COG_BWRY_LARGE, SCREEN_DRIVER(u_eScreen_EPD));
 #endif // DEBUG_OTP
 
-	hV_HAL_SPI3_end();
+    hV_HAL_SPI3_end();
 }
 
 void Pervasive_BWRY_Large::COG_initial()
@@ -179,14 +179,14 @@ void Pervasive_BWRY_Large::COG_initial()
 
     switch (u_eScreen_EPD)
     {
-    case eScreen_EPD_969_QS_0B:
-        b_sendCommand8(0xa5); //
-        b_waitBusy();
-        break;
+        case eScreen_EPD_969_QS_0B:
+            b_sendCommand8(0xa5); //
+            b_waitBusy();
+            break;
 
-    default:
+        default:
 
-        break;
+            break;
     }
 
     // Application note § 3. COG initial
@@ -195,7 +195,7 @@ void Pervasive_BWRY_Large::COG_initial()
     b_sendIndexDataSelect(0x00, &COG_data[26], 3, PANEL_CS_BOTH); // PSR
     b_sendIndexDataSelect(0x61, &COG_data[19], 4, PANEL_CS_BOTH); // TRES
     b_sendIndexDataSelect(0x61, &COG_data[19], 4, PANEL_CS_BOTH); // TRES
-    uint8_t temphold[3] = {COG_data[17],COG_data[18],COG_data[29]};
+    uint8_t temphold[3] = {COG_data[17], COG_data[18], COG_data[29]};
     b_sendIndexDataSelect(0x00, &temphold[0], 3, PANEL_CS_BOTH); // PSR
     b_sendIndexDataSelect(0x06, &COG_data[23], 3, PANEL_CS_BOTH); // BTST_P
     b_sendIndexDataSelect(0x03, &COG_data[30], 3, PANEL_CS_BOTH); // PFS
