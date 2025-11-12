@@ -32,7 +32,7 @@ The driver library can be used stand-alone or with the [Pervasive Displays Libra
 
 * [![](https://img.shields.io/badge/-Knowledge_Base-
 orange)](https://docs.pervasivedisplays.com/knowledge/)
-* [Pervasive Displays, Inc. (龍亭新技股份有限公司)](https://www.pervasivedisplays.com/)
+* [Pervasive Displays Inc. (龍亭新技股份有限公司)](https://www.pervasivedisplays.com/)
 * [Product line](https://www.pervasivedisplays.com/products/)
 
 ## Support
