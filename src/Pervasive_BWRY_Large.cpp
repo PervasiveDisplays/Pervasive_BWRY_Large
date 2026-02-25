@@ -11,6 +11,7 @@
 // See Pervasive_BWRY_Large.h for references
 //
 // Release 904: Added new driver library
+// Release 1003: Added support for BWRY large screens
 //
 
 // Header
@@ -179,7 +180,7 @@ void Pervasive_BWRY_Large::COG_initial()
     switch (u_eScreen_EPD)
     {
         case eScreen_EPD_969_QS_0B:
-            b_sendCommand8(0xa5); //
+            b_sendCommandSelect8(0xa5, PANEL_CS_BOTH); //
             b_waitBusy();
             break;
 
@@ -227,7 +228,7 @@ void Pervasive_BWRY_Large::COG_sendImageDataNormal(FRAMEBUFFER_CONST_TYPE master
 void Pervasive_BWRY_Large::COG_update()
 {
 
-    b_sendCommand8(0x04); // Power on
+    b_sendCommandSelect8(0x04, PANEL_CS_BOTH); // Power on
     b_waitBusy();
 
     b_sendCommandDataSelect8(0x12, 0x00, PANEL_CS_BOTH); // Display Refresh
