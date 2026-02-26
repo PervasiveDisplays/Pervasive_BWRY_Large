@@ -5,12 +5,13 @@
 //
 // Project Pervasive Displays Library Suite
 //
-// Copyright (c) Pervasive Displays, 2010-2025
+// Copyright (c) Pervasive Displays Inc., 2021-2026
 // Licence All rights reserved
 //
 // See Pervasive_BWRY_Large.h for references
 //
 // Release 904: Added new driver library
+// Release 1003: Added support for BWRY large screens
 //
 
 // Header
@@ -163,13 +164,12 @@ void Pervasive_BWRY_Large::COG_getDataOTP()
         digitalWrite(b_pin.panelCS, HIGH); // Unselect
     }
 
+    hV_HAL_SPI3_end();
     u_flagOTP = true;
 
 #if (DEBUG_OTP == 1) // Debug COG_data
     debugOTP(COG_data, _readBytes, COG_BWRY_LARGE, SCREEN_DRIVER(u_eScreen_EPD));
 #endif // DEBUG_OTP
-
-    hV_HAL_SPI3_end();
 }
 
 void Pervasive_BWRY_Large::COG_initial()
@@ -180,7 +180,7 @@ void Pervasive_BWRY_Large::COG_initial()
     switch (u_eScreen_EPD)
     {
         case eScreen_EPD_969_QS_0B:
-            b_sendCommand8(0xa5); //
+            b_sendCommandSelect8(0xa5, PANEL_CS_BOTH); //
             b_waitBusy();
             break;
 
@@ -228,7 +228,7 @@ void Pervasive_BWRY_Large::COG_sendImageDataNormal(FRAMEBUFFER_CONST_TYPE master
 void Pervasive_BWRY_Large::COG_update()
 {
 
-    b_sendCommand8(0x04); // Power on
+    b_sendCommandSelect8(0x04, PANEL_CS_BOTH); // Power on
     b_waitBusy();
 
     b_sendCommandDataSelect8(0x12, 0x00, PANEL_CS_BOTH); // Display Refresh
