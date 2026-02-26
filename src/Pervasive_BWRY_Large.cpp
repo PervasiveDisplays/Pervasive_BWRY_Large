@@ -174,7 +174,7 @@ void Pervasive_BWRY_Large::COG_getDataOTP()
 
 void Pervasive_BWRY_Large::COG_initial()
 {
-    b_sendCommandDataSelect8(0xe6, 0x19, PANEL_CS_BOTH); //	25 C temp
+    b_sendCommandDataSelect8(0xe6, u_temperature, PANEL_CS_BOTH); //	25 C temp
     b_sendCommandDataSelect8(0xe0, 0x02, PANEL_CS_BOTH); //
 
     switch (u_eScreen_EPD)
