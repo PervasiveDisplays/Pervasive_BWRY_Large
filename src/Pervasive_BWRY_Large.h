@@ -4,7 +4,7 @@
 ///
 /// @details Project Pervasive Displays Library Suite
 ///
-/// @version 1003
+/// @version 1004
 ///
 /// @copyright (c) Pervasive Displays Inc., 2021-2026
 /// @copyright All rights reserved

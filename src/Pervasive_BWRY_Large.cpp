@@ -12,7 +12,7 @@
 //
 // Release 904: Added new driver library
 // Release 1003: Added support for BWRY large screens
-//
+// Release 1004: 
 
 // Header
 #include "Pervasive_BWRY_Large.h"
