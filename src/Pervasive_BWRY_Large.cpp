@@ -257,7 +257,7 @@ void Pervasive_BWRY_Large::COG_stopDCDC()
 
     hV_HAL_delayMilliseconds(3);
     b_sendCommandDataSelect8(0xff, 0xe3, PANEL_CS_BOTH); // Turn off DC/DC
-    hV_HAL_delayMilliseconds(6);
+    hV_HAL_delayMilliseconds(6000);
 }
 //
 // --- End of Large screens with Q film
