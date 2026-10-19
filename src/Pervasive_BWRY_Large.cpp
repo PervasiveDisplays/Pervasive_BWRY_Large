@@ -12,7 +12,8 @@
 //
 // Release 904: Added new driver library
 // Release 1003: Added support for BWRY large screens
-// Release 1004:
+// Release 1011: Improved trace granualarity
+//
 
 // Header
 #include "Pervasive_BWRY_Large.h"
@@ -63,14 +64,15 @@ void Pervasive_BWRY_Large::COG_getDataOTP()
     hV_HAL_GPIO_clear(b_pin.panelCS); // Select
     ui16 |= hV_HAL_SPI3_read();
     hV_HAL_GPIO_set(b_pin.panelCS); // Unselect
-    hV_HAL_Serial_crlf();
+
+    hV_HAL_log_crlf();
     if (ui16 == _chipId)
     {
         hV_HAL_log(LEVEL_INFO, "OTP check 1 passed - Chip ID %04x as expected", ui16);
     }
     else
     {
-        hV_HAL_Serial_crlf();
+        hV_HAL_log_crlf();
         hV_HAL_log(LEVEL_CRITICAL, "OTP check 1 failed - Chip ID 0x%04x, expected 0x%04x", ui16, _chipId);
         hV_HAL_exit(0x01);
     }
@@ -146,7 +148,7 @@ void Pervasive_BWRY_Large::COG_getDataOTP()
         }
         else
         {
-            hV_HAL_Serial_crlf();
+            hV_HAL_log_crlf();
             hV_HAL_log(LEVEL_CRITICAL, "OTP check 2 failed - Bank %i, first 0x%02x, expected 0x%02x", 0, COG_data[0], 0xa5);
             hV_HAL_exit(0x01);
         }
@@ -164,9 +166,11 @@ void Pervasive_BWRY_Large::COG_getDataOTP()
     hV_HAL_SPI3_end();
     u_flagOTP = true;
 
-#if (DEBUG_OTP == 1) // Debug COG_data
+#if (DEBUG_LOG > 0)
+#if (DEBUG_OTP > 0) // Debug COG_data
     debugOTP(COG_data, _readBytes, COG_BWRY_LARGE, SCREEN_DRIVER(u_eScreen_EPD));
 #endif // DEBUG_OTP
+#endif // DEBUG_LOG
 }
 
 void Pervasive_BWRY_Large::COG_initial()
